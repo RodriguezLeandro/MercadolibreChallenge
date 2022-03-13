@@ -9,4 +9,5 @@ public class MercadolibreChallengeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MercadolibreChallengeApplication.class, args);
 	}
+
 }

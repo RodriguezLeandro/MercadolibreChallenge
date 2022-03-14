@@ -1,7 +1,6 @@
 package com.example.MercadolibreChallenge.MutantCheckerTests;
 
 import com.example.MercadolibreChallenge.Util.MutantChecker.DiagonallyAscendentMutantChecker;
-import com.example.MercadolibreChallenge.Util.MutantChecker.HorizontalMutantChecker;
 import org.junit.jupiter.api.Test;
 
 import static org.springframework.test.util.AssertionErrors.assertFalse;
@@ -68,5 +67,15 @@ public class DiagonallyAscendentMutantCheckerTests
         boolean res = DiagonallyAscendentMutantChecker.isMutantDiagonallyAscendent(dna);
 
         assertTrue("Test 004 failed, dna is mutant but method returned false as if dna were human", res);
+    }
+
+    @Test
+    void Test005CheckerDoesNotFindAMutantWhenThereIsNotSufficientDna()
+    {
+        String[] dna = {"125", "214, 222"};
+
+        boolean res = DiagonallyAscendentMutantChecker.isMutantDiagonallyAscendent(dna);
+
+        assertFalse("Test 005 failed, not enough dna to determine mutant and method failed", res);
     }
 }

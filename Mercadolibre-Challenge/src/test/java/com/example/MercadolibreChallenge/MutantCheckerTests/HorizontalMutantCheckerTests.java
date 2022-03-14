@@ -47,4 +47,14 @@ public class HorizontalMutantCheckerTests
 
         assertTrue("Test 004 failed, dna is mutant but method returned false as if dna were human", res);
     }
+
+    @Test
+    void Test005CheckerDoesNotFindAMutantWhenThereIsNotSufficientDna()
+    {
+        String[] dna = {"125", "214, 222"};
+
+        boolean res = HorizontalMutantChecker.isMutantHorizontally(dna);
+
+        assertFalse("Test 005 failed, not enough dna to determine mutant and method failed", res);
+    }
 }

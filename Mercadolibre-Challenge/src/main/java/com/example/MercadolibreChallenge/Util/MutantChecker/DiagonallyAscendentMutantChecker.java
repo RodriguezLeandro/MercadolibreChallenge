@@ -34,7 +34,7 @@ public class DiagonallyAscendentMutantChecker
         return false;
     }
 
-    /*Processes diagonally ascendent matrix squares by using begin and end paramers as condition to cycle*/
+    /*Processes diagonally ascendent matrix squares by using begin and end parameters as condition to cycle*/
     private static boolean isMutant(String[] dna, int beginRow, int endRow, int beginColumn)
     {
         for(int row = beginRow; row < endRow; row++)

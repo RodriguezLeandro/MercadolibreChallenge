@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Mercadolibre-Challenge:war">
+    <output-path>$PROJECT_DIR$/Mercadolibre-Challenge/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Mercadolibre-Challenge</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="MercadolibreChallenge.war">
+      <element id="artifact" artifact-name="Mercadolibre-Challenge:war exploded" />
+    </root>
+  </artifact>
+</component>

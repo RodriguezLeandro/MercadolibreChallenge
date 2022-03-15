@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Mercadolibre-Challenge" target="17" />
+      <module name="Mercadolibre-Challenge" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

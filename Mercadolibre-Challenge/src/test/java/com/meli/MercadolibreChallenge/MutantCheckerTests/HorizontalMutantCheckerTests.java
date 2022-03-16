@@ -1,6 +1,6 @@
 package com.meli.MercadolibreChallenge.MutantCheckerTests;
 
-import com.meli.MercadolibreChallenge.Application.Dto.Util.MutantChecker.HorizontalMutantChecker;
+import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.HorizontalMutantChecker;
 import org.junit.jupiter.api.Test;
 
 import static org.springframework.test.util.AssertionErrors.assertFalse;

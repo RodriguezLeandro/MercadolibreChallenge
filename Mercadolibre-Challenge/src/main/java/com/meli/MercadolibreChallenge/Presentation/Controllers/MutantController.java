@@ -1,7 +1,7 @@
 package com.meli.MercadolibreChallenge.Presentation.Controllers;
 
 import com.meli.MercadolibreChallenge.Application.Dto.DnaDto;
-import com.meli.MercadolibreChallenge.Application.Dto.Util.MutantHelper;
+import com.meli.MercadolibreChallenge.Application.Logic.Mutant.MutantLogic;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ public class MutantController
     ResponseEntity newEmployee(@RequestBody DnaDto dna) {
         try
         {
-            if (MutantHelper.isMutant(dna.getDna()))
+            if (MutantLogic.isMutant(dna.getDna()))
             {
                 return ResponseEntity.ok().build();
             }

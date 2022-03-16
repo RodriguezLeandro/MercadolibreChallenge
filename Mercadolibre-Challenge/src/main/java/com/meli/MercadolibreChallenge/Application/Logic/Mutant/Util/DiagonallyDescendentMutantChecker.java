@@ -1,22 +1,38 @@
-package com.meli.MercadolibreChallenge.Application.Dto.Util.MutantChecker;
+package com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util;
 
 public class DiagonallyDescendentMutantChecker
 {
+    /**
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T' in it's
+     * descending center diagonal, or if descending diagonals above or below it also presents repetition.
+     * */
     public static boolean isMutantDiagonallyDescendent(String[] dna)
     {
         return isMutantInDiagonal(dna) || isMutantAboveDiagonal(dna) || isMutantBelowDiagonal(dna);
     }
 
+    /**
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * above the center descending diagonal
+     * */
     private static boolean isMutantAboveDiagonal(String[] dna)
     {
         return isMutant(dna, dna.length-2, 0, 1);
     }
 
+    /**
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * in the center descending diagonal
+     * */
     private static boolean isMutantInDiagonal(String[] dna)
     {
         return isMutant(dna, dna.length-1, dna.length-2, 1);
     }
 
+    /**
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * below the center descending diagonal
+     * */
     private static boolean isMutantBelowDiagonal(String[] dna)
     {
         for(int row = 2; row < dna.length; row++)
@@ -34,7 +50,9 @@ public class DiagonallyDescendentMutantChecker
         return false;
     }
 
-    /*Processes diagonally descendent matrix squares by using begin and end parameters as condition to cycle*/
+    /**
+     * Processes diagonally descendent matrix traversal by using begin and end parameters as condition to cycle
+     * */
     private static boolean isMutant(String[] dna, int beginColumn, int endColumn, int beginRow)
     {
         for(int column = beginColumn; column > endColumn ; column--)

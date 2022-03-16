@@ -1,7 +1,10 @@
-package com.meli.MercadolibreChallenge.Application.Dto.Util.MutantChecker;
+package com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util;
 
 public class HorizontalMutantChecker
 {
+    /**
+     * Returns true if one row of given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * */
     public static boolean isMutantHorizontally(String[] dna)
     {
         for(int row = 0; row < dna.length; row++)

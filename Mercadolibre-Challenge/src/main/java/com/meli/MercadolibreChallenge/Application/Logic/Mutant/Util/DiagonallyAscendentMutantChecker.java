@@ -1,22 +1,38 @@
-package com.meli.MercadolibreChallenge.Application.Dto.Util.MutantChecker;
+package com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util;
 
 public class DiagonallyAscendentMutantChecker
 {
+    /**
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T' in it's
+     * ascending center diagonal, or if ascending diagonals above or below it also presents repetition.
+     * */
     public static boolean isMutantDiagonallyAscendent(String[] dna)
     {
         return isMutantInDiagonal(dna) || isMutantAboveDiagonal(dna) || isMutantBelowDiagonal(dna);
     }
 
+    /**
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * in the center ascending diagonal
+     * */
     private static boolean isMutantInDiagonal(String[] dna)
     {
         return isMutant(dna, dna.length-1, dna.length, 0);
     }
 
+    /**
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * above the center ascending diagonal
+     * */
     private static boolean isMutantAboveDiagonal(String[] dna)
     {
         return isMutant(dna, 1, dna.length-1, 0);
     }
 
+    /**
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * below the center ascending diagonal
+     * */
     private static boolean isMutantBelowDiagonal(String[] dna)
     {
         for(int column = dna.length-1; column > 0 ; column--)
@@ -34,8 +50,9 @@ public class DiagonallyAscendentMutantChecker
         return false;
     }
 
-    /*Processes diagonally ascendent matrix squares by using begin and end parameters as condition to cycle*/
-    private static boolean isMutant(String[] dna, int beginRow, int endRow, int beginColumn)
+    /**
+     * Processes diagonally ascendent matrix traversal by using begin and end parameters as condition to cycle
+     * */    private static boolean isMutant(String[] dna, int beginRow, int endRow, int beginColumn)
     {
         for(int row = beginRow; row < endRow; row++)
         {

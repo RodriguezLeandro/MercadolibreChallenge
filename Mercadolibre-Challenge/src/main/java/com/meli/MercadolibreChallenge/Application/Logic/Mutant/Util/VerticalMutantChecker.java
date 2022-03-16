@@ -1,7 +1,10 @@
-package com.meli.MercadolibreChallenge.Application.Dto.Util.MutantChecker;
+package com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util;
 
 public class VerticalMutantChecker
 {
+    /**
+     * Returns true if one column of given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * */
     public static boolean isMutantVertically(String[] dna)
     {
         for (int col = 0; col < dna.length; col++)

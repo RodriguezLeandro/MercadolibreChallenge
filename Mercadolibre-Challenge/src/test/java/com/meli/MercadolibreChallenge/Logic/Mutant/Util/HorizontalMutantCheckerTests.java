@@ -1,19 +1,19 @@
-package com.meli.MercadolibreChallenge.MutantCheckerTests;
+package com.meli.MercadolibreChallenge.Logic.Mutant.Util;
 
-import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.VerticalMutantChecker;
+import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.HorizontalMutantChecker;
 import org.junit.jupiter.api.Test;
 
 import static org.springframework.test.util.AssertionErrors.assertFalse;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
-public class VerticalMutantCheckerTests
+public class HorizontalMutantCheckerTests
 {
     @Test
     void Test001CheckerFailsWhenDnaIsCompletelyHuman()
     {
         String[] dna = {"ABCDE", "FGHIJ", "KLMNO", "PQRST", "UVWXY"};
 
-        boolean res = VerticalMutantChecker.isMutantVertically(dna);
+        boolean res = HorizontalMutantChecker.isMutantHorizontally(dna);
 
         assertFalse("Test 001 failed, dna is human but method returned true as if dna were mutant", res);
     }
@@ -21,9 +21,9 @@ public class VerticalMutantCheckerTests
     @Test
     void Test002CheckerSucceedsWhenDnaIsMutantAndFoundInFirstCharacters()
     {
-        String[] dna = {"ABCDE", "AGHI", "AKKKL", "ANOPQ", "UVWXY"};
+        String[] dna = {"ABCDE", "FGHI", "KKKKL", "MNOPQ", "UVWXY"};
 
-        boolean res = VerticalMutantChecker.isMutantVertically(dna);
+        boolean res = HorizontalMutantChecker.isMutantHorizontally(dna);
 
         assertTrue("Test 002 failed, dna is mutant but method returned false as if dna were human", res);
     }
@@ -31,9 +31,9 @@ public class VerticalMutantCheckerTests
     @Test
     void Test003CheckerSucceedsWhenDnaIsMutantAndFoundInMiddleCharacters()
     {
-        String[] dna = {"ABCDEFGH2", "IJKLMNOPQ", "BBBBMKIOW", "2345M7890", "AASDMGXXY", "1LKJ23455"};
+        String[] dna = {"ABCDEFGH2", "IJKLMNOPQ", "BBBBSKIOW", "234567890", "AASDFGXXY"};
 
-        boolean res = VerticalMutantChecker.isMutantVertically(dna);
+        boolean res = HorizontalMutantChecker.isMutantHorizontally(dna);
 
         assertTrue("Test 003 failed, dna is mutant but method returned false as if dna were human", res);
     }
@@ -41,9 +41,9 @@ public class VerticalMutantCheckerTests
     @Test
     void Test004CheckerSucceedsWhenDnaIsMutantAndFoundInLastCharacters()
     {
-        String[] dna = {"ABCDE", "IJKPE", "BKIOE", "2789E", "FYYYE"};
+        String[] dna = {"ABCDE", "IJKPQ", "BKIOW", "27890", "FYYYY"};
 
-        boolean res = VerticalMutantChecker.isMutantVertically(dna);
+        boolean res = HorizontalMutantChecker.isMutantHorizontally(dna);
 
         assertTrue("Test 004 failed, dna is mutant but method returned false as if dna were human", res);
     }
@@ -53,7 +53,7 @@ public class VerticalMutantCheckerTests
     {
         String[] dna = {"125", "214, 222"};
 
-        boolean res = VerticalMutantChecker.isMutantVertically(dna);
+        boolean res = HorizontalMutantChecker.isMutantHorizontally(dna);
 
         assertFalse("Test 005 failed, not enough dna to determine mutant and method failed", res);
     }

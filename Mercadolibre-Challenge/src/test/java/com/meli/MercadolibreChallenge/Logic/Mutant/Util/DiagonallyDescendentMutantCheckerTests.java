@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.MutantCheckerTests;
+package com.meli.MercadolibreChallenge.Logic.Mutant.Util;
 
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.DiagonallyDescendentMutantChecker;
 import org.junit.jupiter.api.Test;

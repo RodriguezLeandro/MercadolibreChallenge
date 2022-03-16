@@ -2,15 +2,20 @@ package com.meli.MercadolibreChallenge.Presentation.Controllers;
 
 import com.meli.MercadolibreChallenge.Application.Dto.DnaDto;
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.MutantLogic;
+import com.meli.MercadolibreChallenge.Domain.Entities.Customer;
+import com.meli.MercadolibreChallenge.Domain.RepositoryServices.MutantRepositoryService;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MutantController
 {
     @PostMapping("/mutant")
-    ResponseEntity newEmployee(@RequestBody DnaDto dna) {
+    ResponseEntity mutant(@RequestBody DnaDto dna)
+    {
         try
         {
             if (MutantLogic.isMutant(dna.getDna()))
@@ -21,6 +26,28 @@ public class MutantController
         }catch(Exception e)
         {
          return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+    }
+
+    @GetMapping("/createCustomer")
+    public ResponseEntity greeting(@RequestParam(name="name", required=false, defaultValue="World") String name) {
+        try
+        {
+            if (name.equals("meliTest"))
+            {
+                var mutantRepositoryService = new MutantRepositoryService();
+
+                Customer customer = new Customer();
+                customer.setName("test1");
+                customer.setCustomerID("test2");
+                customer.setEmail("test3");
+                mutantRepositoryService.createCustomer(customer);
+                return ResponseEntity.ok().build();
+            }
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }catch(Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
     }
 }

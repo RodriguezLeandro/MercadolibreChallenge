@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Model;
+package com.meli.MercadolibreChallenge.Domain.Model;
 
 public class Greeting
 {

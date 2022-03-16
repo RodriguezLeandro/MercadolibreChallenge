@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Util.MutantChecker;
+package com.meli.MercadolibreChallenge.Application.Dto.Util.MutantChecker;
 
 public class DiagonallyAscendentMutantChecker
 {

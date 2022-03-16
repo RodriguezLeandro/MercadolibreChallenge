@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Controllers;
+package com.meli.MercadolibreChallenge.Presentation.Controllers;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

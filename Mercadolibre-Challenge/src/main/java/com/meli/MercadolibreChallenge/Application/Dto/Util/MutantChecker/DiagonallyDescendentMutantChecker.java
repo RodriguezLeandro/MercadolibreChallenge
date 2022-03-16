@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Util.MutantChecker;
+package com.meli.MercadolibreChallenge.Application.Dto.Util.MutantChecker;
 
 public class DiagonallyDescendentMutantChecker
 {
@@ -31,20 +31,6 @@ public class DiagonallyDescendentMutantChecker
                 }
             }
         }
-        /*
-        for(int row = dna.length-1; row >= 0; row--)
-        {
-            var consecutiveMatches = 0;
-            for(int column = dna.length-2; column >= 0; column--)
-            {
-                consecutiveMatches = dna[row].charAt(column) == dna[row+1].charAt(column+1) ? consecutiveMatches+1 : 0;
-                if (consecutiveMatches == 3)
-                {
-                    return true;
-                }
-            }
-        }
-        */
         return false;
     }
 

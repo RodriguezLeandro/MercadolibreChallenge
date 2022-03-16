@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Validators;
+package com.meli.MercadolibreChallenge.Application.Dto.Validators;
 
 public class DnaValidator
 {

@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Dto;
+package com.meli.MercadolibreChallenge.Application.Dto;
 
 public class DnaDto
 {

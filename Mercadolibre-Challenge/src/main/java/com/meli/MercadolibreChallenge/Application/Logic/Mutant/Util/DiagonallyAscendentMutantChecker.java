@@ -8,48 +8,21 @@ public class DiagonallyAscendentMutantChecker
      * */
     public static boolean isMutantDiagonallyAscendent(String[] dna)
     {
-        return isMutantInDiagonal(dna) || isMutantAboveDiagonal(dna) || isMutantBelowDiagonal(dna);
+        return isMutantInAscendingDiagonalOrAbove(dna) || isMutantBelowAscendingDiagonal(dna);
     }
 
     /**
      * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
-     * in the center ascending diagonal
+     * in or above the center ascending diagonal
      * */
-    private static boolean isMutantInDiagonal(String[] dna)
+    private static boolean isMutantInAscendingDiagonalOrAbove(String[] dna)
     {
-        var consecutiveMatches = 0;
-        for(int diag = 1; diag < dna.length; diag++)
-        {
-            consecutiveMatches = dna[diag].charAt(diag) == dna[diag-1].charAt(diag-1) ? consecutiveMatches+1 : 0;
-            if (consecutiveMatches == 3)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
-     * above the center ascending diagonal
-     * */
-    private static boolean isMutantAboveDiagonal(String[] dna)
-    {
-        return isMutant(dna, 1, dna.length-1, 0);
-    }
-
-    /**
-     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
-     * below the center ascending diagonal
-     * */
-    private static boolean isMutantBelowDiagonal(String[] dna)
-    {
-        for(int column = dna.length-1; column > 0 ; column--)
+        for(int row = 1; row < dna.length; row++)
         {
             var consecutiveMatches = 0;
-            for(int row = dna.length-1; row >= column; row--)
+            for(int column = 0; column < row; column++)
             {
-                consecutiveMatches = dna[row].charAt(column-1 + (dna.length-1-row)) == dna[row-1].charAt(column + (dna.length-1-row)) ? consecutiveMatches+1 : 0;
+                consecutiveMatches = dna[row-column].charAt(column) == dna[row-column-1].charAt(column+1) ? consecutiveMatches+1 : 0;
                 if (consecutiveMatches == 3)
                 {
                     return true;
@@ -60,15 +33,17 @@ public class DiagonallyAscendentMutantChecker
     }
 
     /**
-     * Processes diagonally ascendent matrix traversal by using begin and end parameters as condition to cycle
-     * */    private static boolean isMutant(String[] dna, int beginRow, int endRow, int beginColumn)
+     * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
+     * below the center ascending diagonal
+     * */
+    private static boolean isMutantBelowAscendingDiagonal(String[] dna)
     {
-        for(int row = beginRow; row < endRow; row++)
+        for(int column = dna.length-1; column > 0 ; column--)
         {
             var consecutiveMatches = 0;
-            for(int column = beginColumn; column < row; column++)
+            for(int row = dna.length-1; row >= column; row--)
             {
-                consecutiveMatches = dna[row-column].charAt(column) == dna[row-column-1].charAt(column+1) ? consecutiveMatches+1 : 0;
+                consecutiveMatches = dna[row].charAt(column-1 + (dna.length-1-row)) == dna[row-1].charAt(column + (dna.length-1-row)) ? consecutiveMatches+1 : 0;
                 if (consecutiveMatches == 3)
                 {
                     return true;

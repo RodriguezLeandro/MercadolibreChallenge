@@ -4,8 +4,7 @@ import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.DiagonallyAs
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.DiagonallyDescendentMutantChecker;
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.HorizontalMutantChecker;
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.VerticalMutantChecker;
-import com.meli.MercadolibreChallenge.Application.Validators.DnaValidator.IDnaValidator;
-import com.meli.MercadolibreChallenge.Application.Validators.ValidatorFactory;
+import com.meli.MercadolibreChallenge.Application.Validators.DnaValidator;
 
 public class MutantLogic
 {
@@ -16,8 +15,7 @@ public class MutantLogic
     {
         try
         {
-            IDnaValidator validator = ValidatorFactory.CreateDnaValidator();
-            if (!validator.isValidDna(dna))
+            if (!DnaValidator.isValidDna(dna))
             {
                 return false;
             }

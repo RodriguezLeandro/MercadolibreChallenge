@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Test.Validators.DnaValidator;
+package com.meli.MercadolibreChallenge.Test.Application.Logic.DnaValidator;
 
 import com.meli.MercadolibreChallenge.Application.Validators.CharMatrixValidator;
 import com.meli.MercadolibreChallenge.Test.Util.TestDescriptor;

@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Presentation.Configuration;
+package com.meli.MercadolibreChallenge.Infrastructure.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

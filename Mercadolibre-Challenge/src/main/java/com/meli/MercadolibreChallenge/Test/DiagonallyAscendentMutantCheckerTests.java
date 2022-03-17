@@ -1,7 +1,7 @@
-package com.meli.MercadolibreChallenge.Logic.Mutant.Util;
+package com.meli.MercadolibreChallenge.Test;
 
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.DiagonallyAscendentMutantChecker;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.springframework.test.util.AssertionErrors.assertFalse;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
@@ -9,7 +9,7 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 public class DiagonallyAscendentMutantCheckerTests
 {
     @Test
-    void Test001CheckerFailsWhenDnaIsCompletelyHuman()
+    public void Test001CheckerFailsWhenDnaIsCompletelyHuman()
     {
         String[] dna = {"ABCDE", "FGHIJ", "KLMNO", "PQRST", "UVWXY"};
 
@@ -19,7 +19,7 @@ public class DiagonallyAscendentMutantCheckerTests
     }
 
     @Test
-    void Test002CheckerSucceedsWhenDnaIsMutantAndFoundInFirstCharacters()
+    public void Test002CheckerSucceedsWhenDnaIsMutantAndFoundInFirstCharacters()
     {
         String[] dna = {"ABCAE",
                         "FGAIJ",
@@ -33,7 +33,7 @@ public class DiagonallyAscendentMutantCheckerTests
     }
 
     @Test
-    void Test003CheckerSucceedsWhenDnaIsMutantAndFoundInMiddleCharacters()
+    public  void Test003CheckerSucceedsWhenDnaIsMutantAndFoundInMiddleCharacters()
     {
         String[] dna = {"123456789",
                         "AASDGQWER",
@@ -51,7 +51,7 @@ public class DiagonallyAscendentMutantCheckerTests
     }
 
     @Test
-    void Test004CheckerSucceedsWhenDnaIsMutantAndFoundInLastCharacters()
+    public void Test004CheckerSucceedsWhenDnaIsMutantAndFoundInLastCharacters()
     {
         String[] dna = {
                 "123456789",
@@ -70,7 +70,7 @@ public class DiagonallyAscendentMutantCheckerTests
     }
 
     @Test
-    void Test005CheckerDoesNotFindAMutantWhenThereIsNotSufficientDna()
+    public void Test005CheckerDoesNotFindAMutantWhenThereIsNotSufficientDna()
     {
         String[] dna = {"125", "214, 222"};
 

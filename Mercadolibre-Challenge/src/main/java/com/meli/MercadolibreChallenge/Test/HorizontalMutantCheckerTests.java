@@ -1,7 +1,7 @@
-package com.meli.MercadolibreChallenge.Logic.Mutant.Util;
+package com.meli.MercadolibreChallenge.Test;
 
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.HorizontalMutantChecker;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.springframework.test.util.AssertionErrors.assertFalse;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
@@ -9,7 +9,7 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 public class HorizontalMutantCheckerTests
 {
     @Test
-    void Test001CheckerFailsWhenDnaIsCompletelyHuman()
+    public void Test001CheckerFailsWhenDnaIsCompletelyHuman()
     {
         String[] dna = {"ABCDE", "FGHIJ", "KLMNO", "PQRST", "UVWXY"};
 
@@ -19,7 +19,7 @@ public class HorizontalMutantCheckerTests
     }
 
     @Test
-    void Test002CheckerSucceedsWhenDnaIsMutantAndFoundInFirstCharacters()
+    public void Test002CheckerSucceedsWhenDnaIsMutantAndFoundInFirstCharacters()
     {
         String[] dna = {"ABCDE", "FGHI", "KKKKL", "MNOPQ", "UVWXY"};
 
@@ -29,7 +29,7 @@ public class HorizontalMutantCheckerTests
     }
 
     @Test
-    void Test003CheckerSucceedsWhenDnaIsMutantAndFoundInMiddleCharacters()
+    public void Test003CheckerSucceedsWhenDnaIsMutantAndFoundInMiddleCharacters()
     {
         String[] dna = {"ABCDEFGH2", "IJKLMNOPQ", "BBBBSKIOW", "234567890", "AASDFGXXY"};
 
@@ -39,7 +39,7 @@ public class HorizontalMutantCheckerTests
     }
 
     @Test
-    void Test004CheckerSucceedsWhenDnaIsMutantAndFoundInLastCharacters()
+    public void Test004CheckerSucceedsWhenDnaIsMutantAndFoundInLastCharacters()
     {
         String[] dna = {"ABCDE", "IJKPQ", "BKIOW", "27890", "FYYYY"};
 
@@ -49,7 +49,7 @@ public class HorizontalMutantCheckerTests
     }
 
     @Test
-    void Test005CheckerDoesNotFindAMutantWhenThereIsNotSufficientDna()
+    public void Test005CheckerDoesNotFindAMutantWhenThereIsNotSufficientDna()
     {
         String[] dna = {"125", "214, 222"};
 

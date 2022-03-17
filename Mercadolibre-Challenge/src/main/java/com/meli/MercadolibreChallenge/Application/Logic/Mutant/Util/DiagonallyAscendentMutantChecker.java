@@ -17,7 +17,16 @@ public class DiagonallyAscendentMutantChecker
      * */
     private static boolean isMutantInDiagonal(String[] dna)
     {
-        return isMutant(dna, dna.length-1, dna.length, 0);
+        var consecutiveMatches = 0;
+        for(int diag = 1; diag < dna.length; diag++)
+        {
+            consecutiveMatches = dna[diag].charAt(diag) == dna[diag-1].charAt(diag-1) ? consecutiveMatches+1 : 0;
+            if (consecutiveMatches == 3)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

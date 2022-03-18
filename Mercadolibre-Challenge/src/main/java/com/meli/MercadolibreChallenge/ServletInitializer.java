@@ -1,4 +1,4 @@
-package com.meli.MercadolibreChallenge.Presentation;
+package com.meli.MercadolibreChallenge;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

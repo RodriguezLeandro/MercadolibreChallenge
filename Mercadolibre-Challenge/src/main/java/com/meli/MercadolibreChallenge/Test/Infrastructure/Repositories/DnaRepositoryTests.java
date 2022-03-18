@@ -41,7 +41,7 @@ public class DnaRepositoryTests {
     @Autowired
     DnaRepository dnaRepository;
 
-    /*Tries to connect to the database before initialization of tests*/
+    /*Tries to connect to the database before dna insertion test*/
     @Before
     public void setup() throws Exception {
         try
@@ -57,6 +57,7 @@ public class DnaRepositoryTests {
         }catch(ResourceInUseException ex)
         {
             logger.error(ExceptionDescriptor.ExceptionOcurred("ResourceInUseException", ex.getErrorMessage()));
+            /*Not throwing exception in case table already exists locally*/
         }
         catch(Exception ex)
         {
@@ -66,7 +67,7 @@ public class DnaRepositoryTests {
     }
 
     @Test
-    public void dnaInsertionSucceds() throws Exception{
+    public void Test001DnaInsertionSucceds() throws Exception{
         var dna = new Dna();
 
         var dnaData = Arrays.asList("ABC","DEF","GHI");
@@ -90,6 +91,54 @@ public class DnaRepositoryTests {
             logger.error(ExceptionDescriptor.ExceptionOcurred("ResourceInUseException", ex.getMessage()));
 
             throw new Exception("Failed to initialize database connection or table creation context for test execution");
+        }
+    }
+
+    @Test
+    public void Test002DnaFetchingSucceeds() throws Exception{
+
+        var dna = new Dna();
+
+        var dnaData = Arrays.asList("ABC","DEF","GHI");
+
+        String uniqueID = UUID.randomUUID().toString();
+
+        dna.setDnaID(uniqueID);
+        dna.setDna(dnaData);
+        dna.setIsMutant(false);
+
+        try
+        {
+            dnaRepository.deleteAll();
+
+            dnaRepository.save(dna);
+
+            var afterAdditionStats = dnaRepository.findById(dna.getDnaID());
+
+            assertTrue(TestDescriptor.TestFailedDescription(true, "Dna fetching failed"), !afterAdditionStats.isEmpty());
+            assertTrue(TestDescriptor.TestFailedDescription(true, "Dna fetching failed"), afterAdditionStats.get().getDna().equals(dna.getDna()));
+            assertTrue(TestDescriptor.TestFailedDescription(true, "Dna fetching failed"), afterAdditionStats.get().getIsMutant() == dna.getIsMutant());
+        }
+        catch(Exception ex)
+        {
+            logger.error(ExceptionDescriptor.ExceptionOcurred("ResourceInUseException", ex.getMessage()));
+
+            throw new Exception("Failed to initialize database connection or table creation context for test execution");
+        }
+    }
+
+    @After
+    public void Erase() throws Exception
+    {
+        try
+        {
+            dnaRepository.deleteAll();
+
+        }catch (Exception ex)
+        {
+            logger.error(ExceptionDescriptor.ExceptionOcurred("ResourceInUseException", ex.getMessage()));
+
+            throw new Exception("Failed to end database connection or table deletion during test execution");
         }
     }
 }

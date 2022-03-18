@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class MutantController
+public class DnaController
 {
 
     @GetMapping("/error")
@@ -17,10 +17,10 @@ public class MutantController
     }
 
     @GetMapping("/stats")
-    public ResponseEntity getHumanMutantRatio(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+    public ResponseEntity getDnaStatistics(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         try
         {
-            var responseBody = MutantLogic.getHumanMutantRatio();
+            var responseBody = MutantLogic.getDnaStatistics();
             return ResponseEntity.ok(responseBody);
         }catch(Exception e)
         {
@@ -29,7 +29,7 @@ public class MutantController
     }
 
     @PostMapping("/mutant")
-    ResponseEntity mutant(@RequestBody DnaDto dna)
+    ResponseEntity processDna(@RequestBody DnaDto dna)
     {
         try
         {

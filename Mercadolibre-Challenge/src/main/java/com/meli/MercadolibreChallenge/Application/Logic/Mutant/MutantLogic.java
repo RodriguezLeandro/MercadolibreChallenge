@@ -5,37 +5,53 @@ import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.DiagonallyAs
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.DiagonallyDescendentMutantChecker;
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.HorizontalMutantChecker;
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.VerticalMutantChecker;
-import com.meli.MercadolibreChallenge.Application.Mapper.DnaHumanMutantRatioMapper;
 import com.meli.MercadolibreChallenge.Application.Validators.DnaValidator;
-import com.meli.MercadolibreChallenge.Infrastructure.DnaService;
+import com.meli.MercadolibreChallenge.Domain.DnaDomain;
+import com.meli.MercadolibreChallenge.Domain.Entities.Dna;
 import com.meli.MercadolibreChallenge.Test.Util.ExceptionDescriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Iterator;
+
 @Component
 public class MutantLogic
 {
 
-    private static DnaService dnaService;
+    private static DnaDomain dnaDomain;
 
     @Autowired
-    public void setDnaService(DnaService dnaService)
+    public void setDnaService(DnaDomain dnaService)
     {
-        MutantLogic.dnaService = dnaService;
+        MutantLogic.dnaDomain = dnaService;
     }
 
     /**
      * Returns true if given dna contains a sequence of 4 repeated ASCII chars: 'A','C','G' or 'T'.
      * */
-    public static DnaHumanMutantRatioDto getHumanMutantRatio()
+    public static DnaHumanMutantRatioDto getDnaStatistics()
     {
         try
         {
-            var dnaHumanMutantRatio = dnaService.getHumanMutantRatio();
-            var dnaHumanMutantRatioDto = dnaHumanMutantRatio.isEmpty() ? new DnaHumanMutantRatioDto() : DnaHumanMutantRatioMapper.toDto(dnaHumanMutantRatio.get()) ;
-            return CalculateHumanMutantRatio(dnaHumanMutantRatioDto);
+            var dnaIterator = DnaDomain.getDnas().iterator();
+
+            var mutantCount = 0;
+            var humanCount = 0;
+
+            while(dnaIterator.hasNext())
+            {
+                if(dnaIterator.next().getIsMutant())
+                {
+                    mutantCount++;
+                }
+                else
+                {
+                    humanCount++;
+                }
+            }
+            return CreateDnaHumanMutantRatioDto(mutantCount, humanCount);
         }catch(Exception ex)
         {
             throw ex;
@@ -69,8 +85,7 @@ public class MutantLogic
     {
         try
         {
-            dnaService.saveMutant(dna);
-            dnaService.addMutantStat();
+            DnaDomain.saveMutant(dna);
         }catch(Exception ex)
         {
             Logger logger = LoggerFactory.getLogger(MutantLogic.class);
@@ -83,8 +98,7 @@ public class MutantLogic
     {
         try
         {
-            dnaService.saveHuman(dna);
-            dnaService.addHumanStat();
+            DnaDomain.saveHuman(dna);
         }catch(Exception ex)
         {
             Logger logger = LoggerFactory.getLogger(MutantLogic.class);
@@ -93,14 +107,26 @@ public class MutantLogic
         }
     }
 
+    private static DnaHumanMutantRatioDto CreateDnaHumanMutantRatioDto(int mutant_count, int human_count)
+    {
+        var res = new DnaHumanMutantRatioDto();
+
+        res.setcount_mutant_dna(mutant_count);
+        res.setcount_human_dna(human_count);
+        res.setratio(CalculateHumanMutantRatio(mutant_count, human_count));
+
+        return res;
+    }
+
     /**
      * Calculates mutant to human ratio by doing the operation mutantsQuantity divided by humansQuantity
      * */
-    private static DnaHumanMutantRatioDto CalculateHumanMutantRatio(DnaHumanMutantRatioDto dnaHumanMutantRatioDto)
+    private static float CalculateHumanMutantRatio(int mutant_count, int human_count)
     {
+        var res = 0.0f;
         try
         {
-            dnaHumanMutantRatioDto.setratio((float)dnaHumanMutantRatioDto.getcount_mutant_dna() / (float)dnaHumanMutantRatioDto.getcount_human_dna());
+            res = human_count > 0 ? (float)mutant_count / (float)human_count : 0.0f;
         }catch(ArithmeticException ex)
         {
             Logger logger = LoggerFactory.getLogger(MutantLogic.class);
@@ -113,7 +139,7 @@ public class MutantLogic
             logger.error(ExceptionDescriptor.ExceptionOcurred("Exception ocurred: ", ex.getMessage()));
             throw ex;
         }
-        return dnaHumanMutantRatioDto;
+        return res;
     }
 }
 

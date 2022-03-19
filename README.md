@@ -2,7 +2,12 @@
 
  Desafío técnico para el puesto de software developer en Mercadolibre.
  
- ## Consigna
+ # Table of Contents
+
+* [Consigna](#consigna)
+* [Desafíos](#desafios)
+* [Solución desafío 1](#solucionDesafio1)
+ ## Consigna <a name="consigna"></a>
  
  Magneto quiere reclutar la mayor cantidad de mutantes para poder luchar contra los X-Men.
  
@@ -17,11 +22,11 @@ Las letras de los Strings solo pueden ser: (A, T, C, G), las cuales representa c
 
 Sabrás si un humano es mutante, si encuentras **más de una secuencia de cuatro letras iguales**, de forma oblicua, horizontal o vertical.
 
-### Desafíos
+### Desafíos <a name="desafios"></a>
 
 **Nivel 1**
 
-Programa que cumpla con el método pedido por Magneto.
+Programa que cumpla con el método pedido por Magneto de la manera mas eficiente posible.
 
 **Nivel 2**
 
@@ -39,6 +44,11 @@ Exponer un servicio extra "/stats" que devuelva un Json con las estadísticas de
 Tener en cuenta que la API puede recibir fluctuaciones agresivas de tráfico (Entre 100 y 1 millón de peticiones por segundo).
 
 Tests automáticos, Code coverage > 80%.
+
+### Solución desafío nivel 1 <a name="solucionDesafio1"></a>
+
+La solución planteada 
+
 
 ## Swagger url
 

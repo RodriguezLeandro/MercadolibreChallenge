@@ -1,6 +1,6 @@
 package com.meli.MercadolibreChallenge.Test.Application.Logic.Mutant;
 
-import com.meli.MercadolibreChallenge.Application.Logic.Mutant.MutantLogic;
+import com.meli.MercadolibreChallenge.Application.Logic.Mutant.DnaLogic;
 import com.meli.MercadolibreChallenge.Test.Util.TestDescriptor;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class MutantLogicTests
     {
         String[] dna = {};
 
-        boolean res = MutantLogic.isMutant(dna);
+        boolean res = DnaLogic.isMutant(dna);
 
         assertFalse(TestDescriptor.TestFailedDescription(false,"Test failed, dna is human but method returned true"), res);
     }
@@ -24,7 +24,7 @@ public class MutantLogicTests
     {
         String[] dna = {"A"};
 
-        boolean res = MutantLogic.isMutant(dna);
+        boolean res = DnaLogic.isMutant(dna);
 
         assertFalse(TestDescriptor.TestFailedDescription(false,"Test failed, dna is human but method returned true"), res);
     }
@@ -43,7 +43,7 @@ public class MutantLogicTests
                 "2G4567T90",
                 "AASDFTXXY"};
 
-        boolean res = MutantLogic.isMutant(dna);
+        boolean res = DnaLogic.isMutant(dna);
 
         assertFalse(TestDescriptor.TestFailedDescription(false,"Test failed, dna is fully human but method returned true"), res);
     }
@@ -253,23 +253,23 @@ public class MutantLogicTests
                 "GATCTACTA",
                 "ACAGTACAC"};
 
-        boolean res1 = MutantLogic.isMutant(dna1);
-        boolean res2 = MutantLogic.isMutant(dna2);
-        boolean res3 = MutantLogic.isMutant(dna3);
-        boolean res4 = MutantLogic.isMutant(dna4);
-        boolean res5 = MutantLogic.isMutant(dna5);
-        boolean res6 = MutantLogic.isMutant(dna6);
-        boolean res7 = MutantLogic.isMutant(dna7);
-        boolean res8 = MutantLogic.isMutant(dna8);
-        boolean res9 = MutantLogic.isMutant(dna9);
-        boolean res10 = MutantLogic.isMutant(dna10);
-        boolean res11 = MutantLogic.isMutant(dna11);
-        boolean res12 = MutantLogic.isMutant(dna12);
-        boolean res13 = MutantLogic.isMutant(dna13);
-        boolean res14 = MutantLogic.isMutant(dna14);
-        boolean res15 = MutantLogic.isMutant(dna15);
-        boolean res16 = MutantLogic.isMutant(dna16);
-        boolean res17 = MutantLogic.isMutant(dna17);
+        boolean res1 = DnaLogic.isMutant(dna1);
+        boolean res2 = DnaLogic.isMutant(dna2);
+        boolean res3 = DnaLogic.isMutant(dna3);
+        boolean res4 = DnaLogic.isMutant(dna4);
+        boolean res5 = DnaLogic.isMutant(dna5);
+        boolean res6 = DnaLogic.isMutant(dna6);
+        boolean res7 = DnaLogic.isMutant(dna7);
+        boolean res8 = DnaLogic.isMutant(dna8);
+        boolean res9 = DnaLogic.isMutant(dna9);
+        boolean res10 = DnaLogic.isMutant(dna10);
+        boolean res11 = DnaLogic.isMutant(dna11);
+        boolean res12 = DnaLogic.isMutant(dna12);
+        boolean res13 = DnaLogic.isMutant(dna13);
+        boolean res14 = DnaLogic.isMutant(dna14);
+        boolean res15 = DnaLogic.isMutant(dna15);
+        boolean res16 = DnaLogic.isMutant(dna16);
+        boolean res17 = DnaLogic.isMutant(dna17);
 
         assertTrue(TestDescriptor.TestFailedDescription(true,"Test failed, dna is mutant but method returned false"), res1);
         assertTrue(TestDescriptor.TestFailedDescription(true,"Test failed, dna is mutant but method returned false"), res2);
@@ -297,9 +297,9 @@ public class MutantLogicTests
         String[] dna2 = {"T", "AA"};
         String[] dna3 = {"aT", "bF"};
 
-        boolean res1 = MutantLogic.isMutant(dna1);
-        boolean res2 = MutantLogic.isMutant(dna2);
-        boolean res3 = MutantLogic.isMutant(dna3);
+        boolean res1 = DnaLogic.isMutant(dna1);
+        boolean res2 = DnaLogic.isMutant(dna2);
+        boolean res3 = DnaLogic.isMutant(dna3);
 
         assertFalse(TestDescriptor.TestFailedDescription(false,"Test failed, dna is human but method returned true"), res1);
         assertFalse(TestDescriptor.TestFailedDescription(false,"Test failed, dna is human but method returned true"), res2);

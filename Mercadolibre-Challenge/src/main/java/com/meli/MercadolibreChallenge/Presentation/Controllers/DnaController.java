@@ -1,7 +1,7 @@
 package com.meli.MercadolibreChallenge.Presentation.Controllers;
 
 import com.meli.MercadolibreChallenge.Application.Dto.DnaDto;
-import com.meli.MercadolibreChallenge.Application.Logic.Mutant.MutantLogic;
+import com.meli.MercadolibreChallenge.Application.Logic.Mutant.DnaLogic;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -20,7 +20,7 @@ public class DnaController
     public ResponseEntity getDnaStatistics(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         try
         {
-            var responseBody = MutantLogic.getDnaStatistics();
+            var responseBody = DnaLogic.getDnaStatistics();
             return ResponseEntity.ok(responseBody);
         }catch(Exception e)
         {
@@ -28,17 +28,27 @@ public class DnaController
         }
     }
 
+    @PostMapping("/stats")
+    public ResponseEntity getDnaStatisticsButForbiddenRestMethod(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    }
+
+    @GetMapping("/mutant")
+    public ResponseEntity processDnaButForbiddenRestMethod() {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    }
+
     @PostMapping("/mutant")
     ResponseEntity processDna(@RequestBody DnaDto dna)
     {
         try
         {
-            if (MutantLogic.isMutant(dna.getDna()))
+            if (DnaLogic.isMutant(dna.getDna()))
             {
-                MutantLogic.saveMutant(dna.getDna());
+                DnaLogic.saveMutant(dna.getDna());
                 return ResponseEntity.ok().build();
             }
-            MutantLogic.saveHuman(dna.getDna());
+            DnaLogic.saveHuman(dna.getDna());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }catch(Exception e)
         {

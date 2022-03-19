@@ -7,17 +7,14 @@ import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.HorizontalMu
 import com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util.VerticalMutantChecker;
 import com.meli.MercadolibreChallenge.Application.Validators.DnaValidator;
 import com.meli.MercadolibreChallenge.Domain.DnaDomain;
-import com.meli.MercadolibreChallenge.Domain.Entities.Dna;
 import com.meli.MercadolibreChallenge.Test.Util.ExceptionDescriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Iterator;
-
 @Component
-public class MutantLogic
+public class DnaLogic
 {
 
     private static DnaDomain dnaDomain;
@@ -25,7 +22,7 @@ public class MutantLogic
     @Autowired
     public void setDnaService(DnaDomain dnaService)
     {
-        MutantLogic.dnaDomain = dnaService;
+        DnaLogic.dnaDomain = dnaService;
     }
 
     /**
@@ -75,7 +72,7 @@ public class MutantLogic
                     DiagonallyDescendentMutantChecker.isMutantDiagonallyDescendent(dna);
         }catch(Exception ex)
         {
-            Logger logger = LoggerFactory.getLogger(MutantLogic.class);
+            Logger logger = LoggerFactory.getLogger(DnaLogic.class);
             logger.error(ExceptionDescriptor.ExceptionOcurred("Arithmetic exception ocurred: ", ex.getMessage()));
             throw ex;
         }
@@ -88,7 +85,7 @@ public class MutantLogic
             DnaDomain.saveMutant(dna);
         }catch(Exception ex)
         {
-            Logger logger = LoggerFactory.getLogger(MutantLogic.class);
+            Logger logger = LoggerFactory.getLogger(DnaLogic.class);
             logger.error(ExceptionDescriptor.ExceptionOcurred("Arithmetic exception ocurred: ", ex.getMessage()));
             throw ex;
         }
@@ -101,7 +98,7 @@ public class MutantLogic
             DnaDomain.saveHuman(dna);
         }catch(Exception ex)
         {
-            Logger logger = LoggerFactory.getLogger(MutantLogic.class);
+            Logger logger = LoggerFactory.getLogger(DnaLogic.class);
             logger.error(ExceptionDescriptor.ExceptionOcurred("Arithmetic exception ocurred: ", ex.getMessage()));
             throw ex;
         }
@@ -129,13 +126,13 @@ public class MutantLogic
             res = human_count > 0 ? (float)mutant_count / (float)human_count : 0.0f;
         }catch(ArithmeticException ex)
         {
-            Logger logger = LoggerFactory.getLogger(MutantLogic.class);
+            Logger logger = LoggerFactory.getLogger(DnaLogic.class);
             logger.error(ExceptionDescriptor.ExceptionOcurred("Arithmetic exception ocurred: ", ex.getMessage()));
             throw ex;
         }
         catch(Exception ex)
         {
-            Logger logger = LoggerFactory.getLogger(MutantLogic.class);
+            Logger logger = LoggerFactory.getLogger(DnaLogic.class);
             logger.error(ExceptionDescriptor.ExceptionOcurred("Exception ocurred: ", ex.getMessage()));
             throw ex;
         }

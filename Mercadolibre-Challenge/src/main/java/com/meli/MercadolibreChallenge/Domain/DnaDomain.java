@@ -21,11 +21,19 @@ public class DnaDomain {
         DnaDomain.dnaRepository = dnaRepository;
     }
 
+    /**
+     * Returns all the dnas stored in database
+     * @return
+     */
     public static Iterable<Dna> getDnas()
     {
         return dnaRepository.findAll();
     }
 
+    /**
+     * Saves mutant dna in database
+     * @param dna
+     */
     public static void saveMutant(String[] dna)
     {
         try
@@ -40,6 +48,10 @@ public class DnaDomain {
         }
     }
 
+    /**
+     * Saves human dna in database
+     * @param dna
+     */
     public static void saveHuman(String[] dna)
     {
         try
@@ -54,6 +66,12 @@ public class DnaDomain {
         }
     }
 
+    /**
+     * Given dna data and if it's human or mutant, creates dna entity
+     * @param dnaData
+     * @param isMutant
+     * @return
+     */
     private static Dna createDna(String[] dnaData, boolean isMutant)
     {
         var dna = new Dna();

@@ -26,6 +26,10 @@ public class DynamoDbConfig {
     @Value("${amazon.aws.secretkey}")
     private String amazonAWSSecretKey;
 
+    /**
+     * Configures dynamodb endpoint and region
+     * @return
+     */
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
         AmazonDynamoDB amazonDynamoDB
@@ -39,6 +43,10 @@ public class DynamoDbConfig {
         return amazonDynamoDB;
     }
 
+    /**
+     * Configures dynamodb credentials using application.properties data file
+     * @return
+     */
     @Bean
     public AWSCredentials amazonAWSCredentials() {
         return new BasicAWSCredentials(

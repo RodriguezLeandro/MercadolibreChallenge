@@ -1,0 +1,17 @@
+com.meli.MercadolibreChallenge
+com.meli.MercadolibreChallenge.Application.Configuration
+com.meli.MercadolibreChallenge.Application.Dto
+com.meli.MercadolibreChallenge.Application.Logic.Mutant
+com.meli.MercadolibreChallenge.Application.Logic.Mutant.Util
+com.meli.MercadolibreChallenge.Application.Validators
+com.meli.MercadolibreChallenge.Domain
+com.meli.MercadolibreChallenge.Domain.Entities
+com.meli.MercadolibreChallenge.Infrastructure.Configuration
+com.meli.MercadolibreChallenge.Infrastructure.Repositories
+com.meli.MercadolibreChallenge.Presentation.Controllers
+com.meli.MercadolibreChallenge.Test.Application.Logic.DnaValidator
+com.meli.MercadolibreChallenge.Test.Application.Logic.Mutant
+com.meli.MercadolibreChallenge.Test.Application.Logic.Mutant.Util
+com.meli.MercadolibreChallenge.Test.Infrastructure.Repositories
+com.meli.MercadolibreChallenge.Test.Presentation.Controllers
+com.meli.MercadolibreChallenge.Test.Util

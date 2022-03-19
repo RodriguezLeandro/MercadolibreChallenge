@@ -4,7 +4,9 @@ public class HorizontalMutantChecker
 {
     /**
      * Returns true if one row of given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
-     * */
+     * @param dna
+     * @return
+     */
     public static boolean isMutantHorizontally(String[] dna)
     {
         for(int row = 0; row < dna.length; row++)

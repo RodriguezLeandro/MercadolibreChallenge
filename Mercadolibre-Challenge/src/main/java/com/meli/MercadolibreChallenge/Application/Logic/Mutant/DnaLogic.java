@@ -26,8 +26,9 @@ public class DnaLogic
     }
 
     /**
-     * Returns true if given dna contains a sequence of 4 repeated ASCII chars: 'A','C','G' or 'T'.
-     * */
+     * Returns statistics of mutant/human ratio information stored in database
+     * @return
+     */
     public static DnaHumanMutantRatioDto getDnaStatistics()
     {
         try
@@ -56,8 +57,10 @@ public class DnaLogic
     }
 
     /**
-     * Returns true if given dna contains a sequence of 4 repeated ASCII chars: 'A','C','G' or 'T'.
-     * */
+     * Returns true if given dna is human, or false in case of dna being mutant.
+     * @param dna
+     * @return
+     */
     public static boolean isMutant(String[] dna)
     {
         try
@@ -78,6 +81,10 @@ public class DnaLogic
         }
     }
 
+    /**
+     * Saves mutant dna in database
+     * @param dna
+     */
     public static void saveMutant(String[] dna)
     {
         try
@@ -91,6 +98,10 @@ public class DnaLogic
         }
     }
 
+    /**
+     * Saves human dna in database
+     * @param dna
+     */
     public static void saveHuman(String[] dna)
     {
         try
@@ -104,6 +115,12 @@ public class DnaLogic
         }
     }
 
+    /**
+     * Given mutant and human counts, returns dto with the mutant/human ratio
+     * @param mutant_count
+     * @param human_count
+     * @return
+     */
     private static DnaHumanMutantRatioDto CreateDnaHumanMutantRatioDto(int mutant_count, int human_count)
     {
         var res = new DnaHumanMutantRatioDto();
@@ -116,7 +133,8 @@ public class DnaLogic
     }
 
     /**
-     * Calculates mutant to human ratio by doing the operation mutantsQuantity divided by humansQuantity
+     * Calculates mutant to human ratio by doing the operation mutantsQuantity/humansQuantity.
+     * In case of humansQuantity being 0, returns 0 as the ratio
      * */
     private static float CalculateHumanMutantRatio(int mutant_count, int human_count)
     {

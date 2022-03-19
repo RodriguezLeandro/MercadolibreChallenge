@@ -17,7 +17,9 @@ public class CharMatrixValidator
 
     /**
      * Returns true if given dna is has at least one character,
-     * */
+     * @param dna
+     * @return
+     */
     public static boolean matrixDnaCharsGreaterThanZero(String[] dna)
     {
         for(int i = 0; i < dna.length; i++)
@@ -32,7 +34,9 @@ public class CharMatrixValidator
 
     /**
      * Returns true if given dna is a square matrix
-     * */
+     * @param dna
+     * @return
+     */
     public static  boolean isDnaNxNMatrix(String[] dna)
     {
         for(int i = 0; i < dna.length; i++)
@@ -47,7 +51,9 @@ public class CharMatrixValidator
 
     /**
      * Returns true if all given dna elements are ASCII chars: 'A','C','G' or 'T'
-     * */
+     * @param dna
+     * @return
+     */
     public static  boolean areDnaLettersOnlyFromDictionary(String[] dna)
     {
         for(int row = 0; row < dna.length; row++)

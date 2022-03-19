@@ -5,7 +5,9 @@ public class DiagonallyDescendentMutantChecker
     /**
      * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T' in it's
      * descending center diagonal, or if descending diagonals above or below it also presents repetition.
-     * */
+     * @param dna
+     * @return
+     */
     public static boolean isMutantDiagonallyDescendent(String[] dna)
     {
         return isMutantInDescendingDiagonalOrAbove(dna) || isMutantBelowDescendingDiagonal(dna);
@@ -14,7 +16,9 @@ public class DiagonallyDescendentMutantChecker
     /**
      * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
      * in the center descending diagonal or above
-     * */
+     * @param dna
+     * @return
+     */
     private static boolean isMutantInDescendingDiagonalOrAbove(String[] dna)
     {
         for(int column = dna.length-1; column > 0 ; column--)
@@ -35,7 +39,9 @@ public class DiagonallyDescendentMutantChecker
     /**
      * Returns true if given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
      * below the center descending diagonal
-     * */
+     * @param dna
+     * @return
+     */
     private static boolean isMutantBelowDescendingDiagonal(String[] dna)
     {
         for(int row = 2; row < dna.length; row++)

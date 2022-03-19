@@ -10,6 +10,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SpringFoxConfig
 {
+    /**
+     * Configuration method to enable swagger at http://localhost:5000/swagger-ui/index.html
+     * @return
+     */
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)

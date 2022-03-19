@@ -4,7 +4,9 @@ public class VerticalMutantChecker
 {
     /**
      * Returns true if one column of given dna has 4 consecutive repeated ASCII chars: 'A','C','G' or 'T'
-     * */
+     * @param dna
+     * @return
+     */
     public static boolean isMutantVertically(String[] dna)
     {
         for (int col = 0; col < dna.length; col++)

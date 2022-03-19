@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.*;
 public class DnaController
 {
 
-    @GetMapping("/error")
-    public ResponseEntity error() {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-    }
-
     @GetMapping("/stats")
     public ResponseEntity getDnaStatistics(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         try

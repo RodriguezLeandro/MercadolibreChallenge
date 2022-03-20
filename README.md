@@ -4,7 +4,7 @@
  
  **Url solución challenge:**
  
-http://mercadolibrechallenge-env.eba-2fmpydyq.sa-east-1.elasticbeanstalk.com/stats
+http://mercadolibrechallenge-env.eba-2fmpydyq.sa-east-1.elasticbeanstalk.com
 
  # Table of Contents
 

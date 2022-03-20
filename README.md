@@ -131,7 +131,7 @@ La base de datos debe estar prendida y escuchando en http://localhost:8000.
 
 Para ello, descromprimir la carpeta zip ```dynamodb_local_meli_DB.rar```, y ejecutar el comando 
 
-```java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar``` dentro de la carpeta dynamodb_local_latest
+```java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar``` dentro de la carpeta dynamodb_local_meli_DB
 
 Otro detalle es que el endpoint brindado asume que la base de datos local tiene dada de alta la tabla de **Dna**, y si no está creada la aplicación fallará.
 La misma viene incluida en el repo, dentro del archivo zip.

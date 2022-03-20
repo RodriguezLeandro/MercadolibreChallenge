@@ -2,6 +2,10 @@
 
  Desafío técnico para el puesto de software developer en Mercadolibre.
  
+ **Url solución challenge:**
+ 
+http://mercadolibrechallenge-env.eba-2fmpydyq.sa-east-1.elasticbeanstalk.com/stats
+
  # Table of Contents
 
 * [Consigna](#consigna)

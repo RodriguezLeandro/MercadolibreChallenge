@@ -47,7 +47,44 @@ Tests automáticos, Code coverage > 80%.
 
 ### Solución desafío nivel 1 <a name="solucionDesafio1"></a>
 
-La solución planteada 
+La solución planteada se basa en realizar 4 barridos a la matriz de NxN para identificar la presencia de adn mutante:
+un barrido horizontal por filas, un barrido vertical por columnas, un barrido por la diagonal ascendente y por último un barrido por la diagonal descendente.
+
+En cada barrido basta con recorrer las lineas en esa dirección, y en caso de encontrarse con 4 repeticiones consecutivas de caractéres, devolver verdadero.
+
+<img width="843" alt="Barridos Solucion 1 Meli ChallengeV2" src="https://user-images.githubusercontent.com/15307332/159141938-4edaca1f-d1b2-4481-9c56-a89f7c32e542.png">
+
+La justificación de ser la solución más eficiente posible se encuentra debido a la complejidad computacional y espacial de la misma.
+
+La complejidad espacial del algoritmo implementado es **O(1)**, ya que no se realiza consumo adicional de memoria. 
+La complejidad temporal del algoritmo implementado es **O(4\*N\*N)**, siendo NxN el tamaño de la instancia ingresada como parámetro, es decir, la cantidad de 
+celdas de la matriz. De esta manera se logra obtener una complejidad temporal lineal en el tamaño de la instancia.
+
+***Como sabemos que es la solución mas eficiente y que no hay otra mejor?***
+
+También analicé el caso teórico de la complejidad temporal/espacial utilizada en diferentes algoritmos conocidos de búsqueda, las cuales fueron:
+
+- Modelar el problema como un algoritmo de búsqueda sobre grafos, utilizando **DFS** para recorrer el modelo e identificar la presencia de adn mutante.
+Esta solución fue descartada porque la búsqueda DFS habría que hacerla al menos desde cada celda, y un recorrido posible desde cada celda para identificar 
+adn mutante tiene tamaño 8 en peor caso, resultando en al menos una complejidad teórica de **O(2*8\*N\*N)**.
+
+- Utilizar un algoritmo de backtracking recursivo desde cada celda, descartando los posibles caminos en los cuales ya se identifica de manera temprana 
+que el adn contiguo será humano, y de esa manera podando los posibles caminos del árbol de búsqueda asociado. Esta se trataba de una solución elegante, ya que 
+con una función recursiva resuelve el problema de una manera muy eficiente, pero la descarté debido a que la complejidad teórica que tiene es: **O(2*8\*N\*N)**. 
+
+- Utilizar un algoritmo de pattern searching de búsqueda de una palabra en un texto, siendo la matriz de adn el texto a buscar y realizar la búsqueda de las palabras
+"AAAA", "GGGG", "CCCC" Y "TTTT". De entre todos los algoritmos de pattern searching analizados, la mayoría tenía una complejidad temporal teórica de al menos **O(N)**,
+y además de eso al realizar la búsqueda sobre cada palabra la complejidad teórica final daba al menos **O(4\*N\*N)**, con lo cual fueron descartados.
+
+- Uno de los algoritmos de pattern searching resultó tener una complejidad muy interesante para este caso, que es el de Suffix tree pattern searching. 
+El cual presenta una complejidad temporal de **O(M)** siendo M el tamaño de la palabra, que en este caso sería 4. 
+Es decir, que la solución más eficiente de búsqueda posible sería la utilización de este algoritmo, pero la idea fue descartada debido al contexto de ejecución en
+nuestra solución. Esta estructura de suffix tree, es adecuada cuando tenemos un texto que no se modifica muy seguido, y es por eso que resulta muy eficiente para guardar información que no cambia demasiado con el tiempo. En nuestro contexto de uso, no nos sirve recrear esta estructura cada vez que llega una petición de 
+análisis de adn. De hecho la creación de la estructura dado un ADN, tiene complejidad **O(N)**. Por eso la estructura fue también descartada.
+
+
+
+
 
 
 ## Swagger url

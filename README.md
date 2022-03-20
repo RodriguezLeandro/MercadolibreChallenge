@@ -7,6 +7,8 @@
 * [Consigna](#consigna)
 * [Desafíos](#desafios)
 * [Solución desafío 1](#solucionDesafio1)
+* [Solución desafío 2](#solucionDesafio2)
+* [Solución desafío 3](#solucionDesafio3)
  ## Consigna <a name="consigna"></a>
  
  Magneto quiere reclutar la mayor cantidad de mutantes para poder luchar contra los X-Men.
@@ -82,10 +84,23 @@ Es decir, que la solución más eficiente de búsqueda posible sería la utiliza
 nuestra solución. Esta estructura de suffix tree, es adecuada cuando tenemos un texto que no se modifica muy seguido, y es por eso que resulta muy eficiente para guardar información que no cambia demasiado con el tiempo. En nuestro contexto de uso, no nos sirve recrear esta estructura cada vez que llega una petición de 
 análisis de adn. De hecho la creación de la estructura dado un ADN, tiene complejidad **O(N)**. Por eso la estructura fue también descartada.
 
+### Solución desafío nivel 2 <a name="solucionDesafio2"></a>
 
+La construcción de la solución fue presentada utilizando el framework Spring boot, una herramienta versátil que permite levantar un api Rest de manera sencilla, y 
+provee varias herramientas que facilitan la administración de la misma.
+La aplicación se encuentra hosteada en el cloud computing de **AWS**, el cual brinda de manera gratuita(al menos por un año) un paquete de servicios infraestructurales con el cual podemos hacer uso de servidores web, bases de datos, balanceadores de carga, y muchas otras utilidades varias.
 
+La selección de AWS como infraestructura para levantar la aplicación, es debido al requerimiento de poder soportar 1 millon de requests por segundo durante picos de 
+carga de solicitudes. Ellos brindan un servicio en el cual ya está dado un balanceador de carga de requests, y dependiendo de la demanda de las mismas, crean instancias virtuales en su servidor de las denominadas EC2, que son componentes que permiten levantar instancias de la aplicación y poner a disposición las mismas para cumplir con las necesidades de demanda de negocio variables.
 
+En cuanto a las decisiones arquitecturales de diseño de la solución, elegí hacer uso del patrón arquitectural **N-Layered pattern**. En el cual la solución se encuentra dividida en diversas capas, las cuales permiten el desacoplamiento de cada uno de sus módulos, y están claramente asignadas las responsabilidades de cada módulo que conforma la solución. 
+Las capas utilizadas son la de presentación, de aplicación, de dominio y de infraestructura. 
 
+El patrón arquitectural fue seleccionado por su simplicidad a la hora de realizar el diseño de la solución de una manera simple, clara y rápida. 
+Y además, porque a gran escala, puede ser utilizado en conjunción con **arquitectura de microservicios**. Las cuales van muy de la mano con estas herramientas libres
+de AWS de cloud computing, ya que al implementar pequeños modulos independientes, el resultado se vuelve escalable y consistente para poder dar servicios confiables y de calidad.
+
+### Solución desafío nivel 3 <a name="solucionDesafio3"></a>
 
 ## Swagger url
 

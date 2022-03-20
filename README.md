@@ -9,6 +9,9 @@
 * [Solución desafío 1](#solucionDesafio1)
 * [Solución desafío 2](#solucionDesafio2)
 * [Solución desafío 3](#solucionDesafio3)
+* [Instrucciones de ejecución](#instruccionesEjecucion)
+* [Documentación y pruebas](#contenidoExtra)
+
  ## Consigna <a name="consigna"></a>
  
  Magneto quiere reclutar la mayor cantidad de mutantes para poder luchar contra los X-Men.
@@ -102,6 +105,52 @@ de AWS de cloud computing, ya que al implementar pequeños modulos independiente
 
 ### Solución desafío nivel 3 <a name="solucionDesafio3"></a>
 
-## Swagger url
+Para la decisión de qué base de datos utilizar, nuevamente hice selección de la infraestructura de AWS, para cumplir con el requerimiento de 1 millón de peticiones 
+por segundo. Ellos proveen una base de datos **NoSQL** llamada dynamodb, la cual se trata de una base de datos no relacional, en la cual tenemos elementos como tablas, atributos y datos para manejar la persistencia de la información. La herramienta fue seleccionada por su velocidad y versatilidad a la hora de poder responder a solicitudes de manera escalar.
 
-http://localhost:5000/swagger-ui/index.html#/dna-controller/processDnaUsingPOST
+Aws provee un sdk para java, en el cual se pueden realizar pruebas de desarrollo locales, y luego cambiando los endpoint utilizados, hacer uso de las 
+funcionalidades en la base de datos productiva que ellos brindan.
+Este proyecto que se encuentra subido, tiene configurados en el application.properties el ```amazon.dynamodb.endpoint``` a la base local, y también las credenciales
+de configuración ``amazon.aws.accesskey`` y ``amazon.aws.secretkey`` las cuales deben ser cambiadas en caso de querer deployar a un ambiente productivo.
+
+## Instrucciones de ejecución <a name="instruccionesEjecucion"></a>
+
+1- Clonar el proyecto del repositorio
+
+```git clone  https://github.com/RodriguezLeandro/MercadolibreChallenge```
+
+2- Descromprimir y ***prender la base de datos local de dynamodb***
+
+Es muy importante que la base de datos local se encuentre prendida, ya que de no ser así tanto el endpoint \/stats como \/mutant va a intentar conectar y de no estar prendida fallará la aplicación.
+
+La base de datos debe estar prendida y escuchando en http://localhost:8000.
+
+Para ello, descromprimir la carpeta zip ```dynamodb_local_meli_DB.rar```, y ejecutar el comando 
+
+```java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar``` dentro de la carpeta dynamodb_local_latest
+
+Otro detalle es que el endpoint brindado asume que la base de datos local tiene dada de alta la tabla de **Dna**, y si no está creada la aplicación fallará.
+La misma viene incluida en el repo, dentro del archivo zip.
+
+En caso de error de existencia de la tabla de dna, y teniendo la base de datos local prendida, se pueden ejecutar los tests de 
+
+```Mercadolibre-Challenge\src\main\java\com\meli\MercadolibreChallenge\Test\Infrastructure\Repositories\DnaRepositoryTests```
+
+En donde si no existe la tabla de dna, durante la ejecución de los mismos se creará.
+
+3- Parados en la carpeta inicial del proyecto, ejecutar el comando:
+
+```./mvnw clean install```
+```./mvnw spring-boot:run```
+
+Eso debería levantar la aplicación que escucha en ``http://localhost:5000``. 
+
+4- Para ejecutar los tests, también debe encontrarse la base de datos local prendida, escuchando en el puerto 8000. 
+Desde intellij, hacer click derecho en la carpeta ```Mercadolibre-Challenge\src\main\java\com\meli\MercadolibreChallenge\Test```, y dar a la 
+opción run tests in 'com.meli...'. 
+
+## Documentacion y pruebas <a name="contenidoExtra"></a>
+
+- En la carpeta javadocs, se encuentra generada la documentación de los métodos presentados en la solución.
+- En ```http://localhost:5000/swagger-ui/index.html```, se puede acceder a swagger-ui, una herramienta para probar las funcionalidades de los endpoints.
+

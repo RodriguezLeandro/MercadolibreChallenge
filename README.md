@@ -75,11 +75,11 @@ También analicé el caso teórico de la complejidad temporal/espacial utilizada
 
 - Modelar el problema como un algoritmo de búsqueda sobre grafos, utilizando **DFS** para recorrer el modelo e identificar la presencia de adn mutante.
 Esta solución fue descartada porque la búsqueda DFS habría que hacerla al menos desde cada celda, y un recorrido posible desde cada celda para identificar 
-adn mutante tiene tamaño 8 en peor caso, resultando en al menos una complejidad teórica de **O(2*8\*N\*N)**.
+adn mutante tiene tamaño 8 en peor caso, resultando en al menos una complejidad teórica de **O(3*8\*N\*N)**.
 
 - Utilizar un algoritmo de backtracking recursivo desde cada celda, descartando los posibles caminos en los cuales ya se identifica de manera temprana 
 que el adn contiguo será humano, y de esa manera podando los posibles caminos del árbol de búsqueda asociado. Esta se trataba de una solución elegante, ya que 
-con una función recursiva resuelve el problema de una manera muy eficiente, pero la descarté debido a que la complejidad teórica que tiene es: **O(2*8\*N\*N)**. 
+con una función recursiva resuelve el problema de una manera muy eficiente, pero la descarté debido a que la complejidad teórica que tiene es: **O(3*8\*N\*N)**. 
 
 - Utilizar un algoritmo de pattern searching de búsqueda de una palabra en un texto, siendo la matriz de adn el texto a buscar y realizar la búsqueda de las palabras
 "AAAA", "GGGG", "CCCC" Y "TTTT". De entre todos los algoritmos de pattern searching analizados, la mayoría tenía una complejidad temporal teórica de al menos **O(N)**,
